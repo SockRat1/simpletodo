@@ -12,5 +12,10 @@ body {
 
 .todoheader {
   color: #e8e8e8;
-  @apply text-[4rem] w-[50vw] font-bold h-[66.6vh] text-center;
+  @apply text-[4rem] font-bold text-center;
+}
+
+.app {
+  height: 66.6vh;
+  width: 70rem;
 }

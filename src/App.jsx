@@ -4,10 +4,10 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <>
+    <div className={styles.app}>
       <TodoHeader className={styles.todoheader}></TodoHeader>
       <TodoList></TodoList>
-    </>
+    </div>
   );
 }
 
