@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "tailwindcss";
+
+body {
+  background-color: #141414;
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.todoheader {
+  color: #e8e8e8;
+  @apply text-[4rem] w-[50vw] font-bold h-[66.6vh] text-center;
+}
