@@ -1,12 +1,20 @@
+import { useState } from "react";
 import styles from "./TodoHeader.module.css";
 import TodoControls from "./TodoControls";
-function TodoHeader() {
+function TodoHeader({ sendSetValue, sendValue, onAdd }) {
+  const [value, setValue] = useState("");
+  sendValue(value);
+  sendSetValue(setValue);
   return (
     <div className={styles.header}>
       <h1 className={styles.logo}>Todo List</h1>
       <div className={styles.form}>
-        <input className={styles.input}></input>
-        <div className={styles.btn}>
+        <input
+          className={styles.input}
+          value={value}
+          onInput={(e) => setValue(e.target.value)}
+        ></input>
+        <div className={styles.btn} onClick={onAdd}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
@@ -15,7 +23,7 @@ function TodoHeader() {
             className={styles.plus}
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"
             ></path>
           </svg>
