@@ -19,13 +19,14 @@
   display: flex;
   gap: 1rem;
 }
-.check {
+.svg {
   width: 3rem;
   height: 3rem;
   fill: #202020;
 }
 .checked {
-  opacity: 30%;
+  opacity: 40%;
+  transition: opacity 0.3s ease;
 }
 .text.strike::after {
   opacity: 1;
