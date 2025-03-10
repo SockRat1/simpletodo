@@ -1,14 +1,6 @@
 import styles from "./TodoHeader.module.css";
 import TodoControls from "./TodoControls";
-function TodoHeader({ value, setValue, onAdd, setTodos, todos }) {
-  function onReset() {
-    setTodos([]);
-  }
-  function onClear() {
-    const arr = todos.filter((todo) => !todo.isChecked);
-    setTodos(arr);
-  }
-
+function TodoHeader({ value, setValue, onAdd, onReset, onClear }) {
   return (
     <div className={styles.header}>
       <h1 className={styles.logo}>Todo List</h1>

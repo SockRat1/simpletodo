@@ -13,15 +13,21 @@ function App() {
     setNextId((prev) => prev + 1);
     setValue("");
   }
-
+  function onReset() {
+    setTodos([]);
+  }
+  function onClear() {
+    const arr = getTodos.filter((todo) => !todo.isChecked);
+    setTodos(arr);
+  }
   return (
     <div className={styles.app}>
       <TodoHeader
         value={value}
         setValue={setValue}
         onAdd={addHadler}
-        setTodos={setTodos}
-        todos={getTodos}
+        onReset={onReset}
+        onClear={onClear}
       ></TodoHeader>
       <TodoList todos={getTodos} setTodos={setTodos} />
       <CompletedTasks></CompletedTasks>
