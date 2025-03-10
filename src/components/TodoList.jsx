@@ -1,29 +1,28 @@
-import { useState } from "react";
 import TodoItem from "./TodoItem";
 
-function Todolist({ children }) {
-  const [checkedStates, setCheckedStates] = useState(children.map(() => false));
-
-  function toggleChecked(index) {
-    setCheckedStates((prev) => {
-      return prev.map((val, i) => {
-        return i === index ? !val : val;
-      });
-    });
+function Todolist({ todos, setTodos }) {
+  function toggleChecked(i) {
+    setTodos(
+      todos.map((val, index) => {
+        return {
+          ...val,
+          isChecked: index === i ? !val.isChecked : val.isChecked,
+        };
+      })
+    );
   }
-  return (
-    <>
-      {children.map((el, index) => (
-        <TodoItem
-          key={index}
-          isChecked={checkedStates[index]}
-          toggleChecked={() => toggleChecked(index)}
-        >
-          {el.text}
-        </TodoItem>
-      ))}
-    </>
-  );
+
+  return todos.map((el, index) => {
+    return (
+      <TodoItem
+        key={el.id}
+        isChecked={el.isChecked}
+        toggleChecked={() => toggleChecked(index)}
+      >
+        {el.text}
+      </TodoItem>
+    );
+  });
 }
 
 export default Todolist;
