@@ -1,13 +1,13 @@
 import TodoButton from "./TodoButton";
 import styles from "./TodoItem.module.css";
-function TodoItem({ children, isChecked, toggleChecked }) {
+function TodoItem({ children, isChecked, toggleChecked, deletefn }) {
   return (
     <div className={styles.item + " " + (isChecked && styles.checked)}>
       <p className={styles.text + " " + (isChecked && styles.strike)}>
         {children}
       </p>
       <div className={styles.buttons}>
-        <TodoButton>
+        <TodoButton onClick={deletefn}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"

@@ -5,16 +5,9 @@ import TodoList from "./components/TodoList";
 import CompletedTasks from "./components/CompletedTasks";
 
 function App() {
+  const [value, setValue] = useState("");
   const [getTodos, setTodos] = useState([]);
   const [nextId, setNextId] = useState(0);
-  let value;
-  let setValue;
-  function adoptedValue(e) {
-    value = e;
-  }
-  function adoptedSetValue(e) {
-    setValue = e;
-  }
   function addHadler() {
     setTodos([...getTodos, { id: nextId, text: value, isChecked: false }]);
     setNextId((prev) => prev + 1);
@@ -24,9 +17,11 @@ function App() {
   return (
     <div className={styles.app}>
       <TodoHeader
-        sendValue={adoptedValue}
-        sendSetValue={adoptedSetValue}
+        value={value}
+        setValue={setValue}
         onAdd={addHadler}
+        setTodos={setTodos}
+        todos={getTodos}
       ></TodoHeader>
       <TodoList todos={getTodos} setTodos={setTodos} />
       <CompletedTasks></CompletedTasks>

@@ -1,10 +1,14 @@
-import { useState } from "react";
 import styles from "./TodoHeader.module.css";
 import TodoControls from "./TodoControls";
-function TodoHeader({ sendSetValue, sendValue, onAdd }) {
-  const [value, setValue] = useState("");
-  sendValue(value);
-  sendSetValue(setValue);
+function TodoHeader({ value, setValue, onAdd, setTodos, todos }) {
+  function onReset() {
+    setTodos([]);
+  }
+  function onClear() {
+    const arr = todos.filter((todo) => !todo.isChecked);
+    setTodos(arr);
+  }
+
   return (
     <div className={styles.header}>
       <h1 className={styles.logo}>Todo List</h1>
@@ -29,7 +33,7 @@ function TodoHeader({ sendSetValue, sendValue, onAdd }) {
           </svg>
         </div>
       </div>
-      <TodoControls></TodoControls>
+      <TodoControls onReset={onReset} onClear={onClear}></TodoControls>
     </div>
   );
 }
