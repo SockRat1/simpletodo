@@ -1,18 +1,27 @@
-import TodoItem from "./TodoItem";
-
+import CompletedTasks from "./CompletedTasks";
+import UncompletedTasks from "./UncompletedTasks";
 function Todolist({ todos, deleteTodo, toggleTodo }) {
-  return todos.map((el) => {
-    return (
-      <TodoItem
-        key={el.id}
-        isChecked={el.isChecked}
-        toggleChecked={() => toggleTodo(el.id)}
-        deletefn={() => deleteTodo(el.id)}
-      >
-        {el.text}
-      </TodoItem>
-    );
-  });
+  function getUncheckedTodos(todos) {
+    return todos.filter((todo) => !todo.isChecked);
+  }
+  function getCheckedTodos(todos) {
+    return todos.filter((todo) => todo.isChecked);
+  }
+
+  return (
+    <>
+      <UncompletedTasks
+        getUncheckedTodos={() => getUncheckedTodos(todos)}
+        deleteTodo={deleteTodo}
+        toggleTodo={toggleTodo}
+      />
+      <CompletedTasks
+        getCheckedTodos={() => getCheckedTodos(todos)}
+        deleteTodo={deleteTodo}
+        toggleTodo={toggleTodo}
+      />
+    </>
+  );
 }
 
 export default Todolist;
