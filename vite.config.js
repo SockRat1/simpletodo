@@ -6,4 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   base: "/simpletodo/",
   plugins: [react(), tailwindcss()],
+  css: {
+    modules: {
+      localsConvention: "camelCase", // Преобразует имена классов в camelCase
+    },
+  },
 });
